@@ -1,0 +1,41 @@
+.learn {
+  background-color: #eee;
+  .back {
+    margin: 20px 0;
+    padding: 10px 20px;
+    color: white;
+    min-width: 100px;
+    background-color: var(--primary-background-color);
+  }
+  .learn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    .learn-item {
+      margin: 20px 0;
+    }
+    .learn-question {
+      font-size: 20px;
+      margin-bottom: 1rem;
+    }
+    table {
+      box-shadow: 0 0 10px black;
+    }
+    table,
+    tr,
+    th,
+    td {
+      border: 1px solid black;
+      background-color: var(--primary-background-color);
+      color: white;
+      border-collapse: collapse;
+    }
+    td,
+    th {
+      padding: 10px 25px;
+    }
+  }
+}

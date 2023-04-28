@@ -1,0 +1,19 @@
+.history {
+  .scores-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    .score {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.462);
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      margin: 10px;
+      min-width: 300px;
+      background-color: var(--primary-background-color);
+      max-width: 500px;
+    }
+  }
+}

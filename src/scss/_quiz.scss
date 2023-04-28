@@ -1,0 +1,194 @@
+.quiz {
+  height: 89vh;
+  display: flex;
+  flex-direction: column;
+  .finished {
+    h1 {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .review-btn {
+      color: white;
+      background-color: var(--primary-background-color);
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+    }
+  }
+  .quizheader {
+    padding: 0 50px;
+    flex-basis: 100px;
+    background-color: var(--primary-background-color);
+    box-shadow: 0 0 10px rgb(120, 119, 119);
+    color: black;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    h1 {
+      color: white;
+      margin-left: 220px;
+      flex: 1;
+    }
+    .finish {
+      padding: 10px 15px;
+    }
+    .time {
+      color: white;
+      font-size: 20px;
+      padding: 10px;
+      margin-right: 40px;
+    }
+  }
+  .bottom-container {
+    display: flex;
+    flex: 1;
+    height: 100%;
+  }
+  .question {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    .options-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      .options:hover {
+        box-shadow: 0 0 10px rgb(101, 101, 101);
+      }
+      .options {
+        padding: 10px;
+        user-select: none;
+        border-radius: 3px;
+        border: 1px solid black;
+        margin: 10px 10px;
+      }
+    }
+    .top-container {
+      flex: 1;
+    }
+    .nav-btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      margin-bottom: 50px;
+      button {
+        padding: 10px 20px;
+        margin: 0 20px;
+      }
+      .prev {
+        background-color: var(--primary-background-color);
+        color: white;
+      }
+      .next {
+        background-color: var(--primary-background-color);
+        color: white;
+      }
+    }
+    .top-question {
+      display: flex;
+      margin-top: 10px;
+      margin-bottom: 50px;
+      h1 {
+        text-align: center;
+        flex: 1;
+      }
+      .mark-btn {
+        background: none;
+        border: 0px;
+        font-size: 25px;
+      }
+    }
+    .word-container {
+      margin: 0 auto;
+      margin-bottom: 90px;
+      // overflow: hidden;
+      max-width: 90vw;
+      td {
+        min-width: 100px;
+      }
+      .top {
+        text-align: center;
+        font-size: 25px;
+        // background-color: pink;
+      }
+      .bottom {
+        .Droppable {
+          height: 100%;
+          width: 100%;
+        }
+        td {
+          text-align: center;
+          padding: 0;
+          border: 2px solid var(--primary-background-color);
+          min-height: 20px;
+          height: 25px;
+          //   background-color: green;
+          border-top: 0px;
+          border-left: 0px;
+          border-right: 0px;
+          //   border-bottom-width: 5px;
+          //   border-color: red;
+          .incorrect {
+            color: red;
+          }
+          .correct {
+            color: green;
+          }
+        }
+      }
+    }
+  }
+  .sidebar::-webkit-scrollbar {
+    width: 5px;
+  }
+  .sidebar {
+    height: 100%;
+    flex-shrink: 0;
+    width: 100px;
+    background-color: var(--primary-background-color);
+    color: white;
+    overflow: scroll;
+    border: 0px;
+    .marked {
+      background-color: rgb(249, 249, 165);
+    }
+    .answered {
+      color: white;
+      border: 0px solid;
+      background-color: rgb(37, 171, 37);
+    }
+    .correct {
+      background-color: rgb(51, 218, 51) !important;
+      color: white;
+    }
+    .incorrect {
+      color: white;
+      background-color: rgb(224, 25, 25) !important;
+    }
+    .selected {
+      color: white;
+      background-color: var(--primary-background-color);
+      color: white;
+      border-color: white !important;
+      box-shadow: 0 0 10px rgb(114, 114, 114);
+      border-style: solid;
+    }
+    .sidebar-btn:hover {
+      background-color: var(--primary-background-color);
+      color: white;
+    }
+    .sidebar-btn {
+      display: block;
+      margin: 5px auto;
+      width: 70px;
+      height: 70px;
+      border-radius: 5px;
+      border: 1px solid black;
+      text-align: center;
+    }
+  }
+}

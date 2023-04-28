@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: sans-serif;
+  user-select: none;
+}
+:root {
+  --primary-background-color: #764abc;
+  --primary-text-color: white;
+}
+*,
+*::after,
+*::before {
+  user-select: none;
+  box-sizing: border-box;
+}
