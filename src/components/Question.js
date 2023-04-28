@@ -3,6 +3,7 @@ import { useState } from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 import { Draggable, Droppable } from "react-drag-and-drop";
 import FadeIn from "react-fade-in";
+import { words } from "lodash-es";
 // <Draggable type={["opt"]} data={tag} type="foo" data="bar">
 //   <div>Drag me!</div>
 // </Draggable type={["opt"]} data={tag}>
@@ -32,10 +33,17 @@ function Question({
   const minutes = Math.floor((time % 360000) / 6000);
   const seconds = Math.floor((time % 6000) / 100);
   const sentence = data[selected];
+
   const [answersTemp, setAnswersTemp] = useState([]);
   const [toAnswer, setToAnswer] = useState(0);
   const selectedRef = useRef(selected);
+  const shuffeledArr = useRef([]);
 
+  useEffect(() => {
+    shuffeledArr.current = sentence.tags.sort(() => {
+      return Math.random() - 0.5;
+    });
+  }, [data]);
   function saveAnswers(answersTemp) {
     setAnswers(
       answers?.map((item, index) => {
@@ -47,11 +55,12 @@ function Question({
             time: minutes * 60 + seconds,
           };
         }
-        console.log({ minutes, seconds, ans: minutes * 60 + seconds });
+        // console.log({ minutes, seconds, ans: minutes * 60 + seconds });
         return item;
       })
     );
   }
+
   useEffect(() => {
     if (selectedRef.current != selected) {
       selectedRef.current = selected;
@@ -110,7 +119,6 @@ function Question({
                         setAnswersTemp((prev) => {
                           prev = [...prev];
                           prev[index] = e.opt;
-
                           return prev;
                         });
                       }}
@@ -118,21 +126,25 @@ function Question({
                       {isPreview &&
                         answers[selected].correcttags[index].tag_description !=
                           answers[selected].answer[index] && (
-                          <div className="incorrect">
-                            {answers[selected].answer[index]}
+                          <div className="correct correct-ans">
+                            {
+                              answers[selected].correcttags[index]
+                                .tag_description
+                            }
                           </div>
                         )}
                       {isPreview && (
                         <div
                           className={
-                            answers[selected].correcttags[index]
-                              .tag_description ==
+                            " entered-ans " +
+                              answers[selected].correcttags[index]
+                                .tag_description ==
                             answers[selected].answer[index]
                               ? "correct"
                               : "incorrect"
                           }
                         >
-                          {answers[selected].correcttags[index].tag_description}
+                          {answers[selected].answer[index] || "NULL"}
                         </div>
                       )}
                       {answersTemp[index] != null && answersTemp[index]}
@@ -146,7 +158,11 @@ function Question({
             <div className="options-container">
               {sentence?.tags.map((tag, index) => {
                 return (
-                  <Draggable type={["opt"]} data={tag.tag_description}>
+                  <Draggable
+                    type={["opt"]}
+                    key={index}
+                    data={tag.tag_description}
+                  >
                     <button
                       key={tag.tag_description + String(index)}
                       className="options"

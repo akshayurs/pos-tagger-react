@@ -4,17 +4,16 @@ function History() {
   const [scores, setScores] = useState([]);
 
   useEffect(() => {
-    let data = JSON.parse(localStorage.getItem("scores"))[0];
-    let temp = [1, 2, 4, 4, 44, 4, 4, 4, 4, 4].map(() => data);
-    setScores(temp);
+    let data = JSON.parse(localStorage.getItem("scores"));
+    setScores(data);
   }, []);
   return (
     <div className="history">
       <Header title="History" />
       <div className="scores-container">
         {scores &&
-          scores.map((score) => (
-            <div className="score">
+          scores.map((score, index) => (
+            <div className="score" key={index}>
               <div>{new Date(score.date).toLocaleString()}</div>
               <div>
                 Score: {Math.round((score.correct / score.totalWord) * 100)}%

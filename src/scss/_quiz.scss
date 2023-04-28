@@ -132,7 +132,11 @@
           border-right: 0px;
           //   border-bottom-width: 5px;
           //   border-color: red;
+          .correct-ans {
+            margin-bottom: 9px;
+          }
           .incorrect {
+            margin-bottom: 6px;
             color: red;
           }
           .correct {
@@ -153,6 +157,7 @@
     color: white;
     overflow: scroll;
     border: 0px;
+
     .marked {
       background-color: rgb(249, 249, 165);
     }

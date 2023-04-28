@@ -8,7 +8,7 @@ function Learn() {
   const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("http://localhost:5000/random?amount=10");
+      const res = await fetch("http://localhost:5000/random?amount=20");
       const data = await res.json();
       setData(data.data);
       setLoading(false);
@@ -22,7 +22,7 @@ function Learn() {
       <div className="learn-container">
         {data.map((item, index1) => {
           return (
-            <div className="learn-item">
+            <div className="learn-item" key={index1}>
               <div className="learn-question">
                 {index1 + 1}. {item.sentence}
               </div>
@@ -31,9 +31,9 @@ function Learn() {
                   <th>Word</th>
                   <th>Tag</th>
                 </tr>
-                {item.tags.map((tag) => {
+                {item.tags.map((tag, index) => {
                   return (
-                    <tr className="learn-answer-item">
+                    <tr className="learn-answer-item" key={index}>
                       <td className="learn-answer-word">{tag.word} :</td>
                       <td className="learn-answer-pos">
                         {tag.tag_description}

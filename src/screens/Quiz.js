@@ -135,8 +135,9 @@ function Quiz() {
   useEffect(() => {
     setLoading(true);
     (async () => {
-      const res = await fetch("http://localhost:5000/random?amount=10");
+      const res = await fetch("http://localhost:5000/random?amount=20");
       const data = await res.json();
+
       setData(data.data);
       setAnswers(
         data.data.map((item) => {
