@@ -49,7 +49,7 @@ ChartJS.register(
   Legend
 );
 
-function Quiz() {
+function Quiz({ lang }) {
   const [data, setData] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -135,7 +135,9 @@ function Quiz() {
   useEffect(() => {
     setLoading(true);
     (async () => {
-      const res = await fetch("http://localhost:5000/random?amount=20");
+      const res = await fetch(
+        "http://localhost:5000/random?amount=20&" + "lang=" + lang
+      );
       const data = await res.json();
 
       setData(data.data);

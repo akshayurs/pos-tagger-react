@@ -2,13 +2,15 @@ import { useEffect, useState } from "react";
 import Loading from "../components/Loading";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
-function Learn() {
+function Learn({ lang }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("http://localhost:5000/random?amount=20");
+      const res = await fetch(
+        "http://localhost:5000/random?amount=2&" + "lang=" + lang
+      );
       const data = await res.json();
       setData(data.data);
       setLoading(false);

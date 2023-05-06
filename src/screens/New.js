@@ -2,7 +2,7 @@ import { useState } from "react";
 import Header from "../components/Header";
 import Loading from "../components/Loading";
 
-function New() {
+function New({ lang }) {
   const [inp, setInp] = useState("");
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({ tags: [] });
@@ -16,7 +16,11 @@ function New() {
           e.preventDefault();
           setLoading(true);
           const res = await fetch(
-            "http://localhost:5000/tag?sentence=" + inp.split(" ").join("+")
+            "http://localhost:5000/tag?sentence=" +
+              inp.split(" ").join("+") +
+              "&" +
+              "lang=" +
+              lang
           );
           const resData = await res.json();
           setData(resData.data[0]);
@@ -48,7 +52,11 @@ function New() {
               return (
                 <tr key={ind}>
                   <td>{tag.word}</td>
-                  <td>{tag.tag_description}</td>
+                  {lang != "en" ? (
+                    <td>{tag.explain}</td>
+                  ) : (
+                    <td>{tag.tag_description}</td>
+                  )}
                 </tr>
               );
             })}
